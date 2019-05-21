@@ -52,7 +52,9 @@ namespace HairSalon.Tests
       string name01 = "Test Stylist1";
       string name02 = "Test Stylist2";
       Stylist newStylist1 = new Stylist(name01);
+      newStylist1.Save();
       Stylist newStylist2 = new Stylist(name02);
+      newStylist2.Save();
       List<Stylist> newList = new List<Stylist> { newStylist1, newStylist2 };
       List<Stylist> result = Stylist.GetAll();
       CollectionAssert.AreEqual(newList, result);
@@ -64,7 +66,9 @@ namespace HairSalon.Tests
       string name01 = "Test Stylist1";
       string name02 = "Test Stylist2";
       Stylist newStylist1 = new Stylist(name01);
+      newStylist1.Save();
       Stylist newStylist2 = new Stylist(name02);
+      newStylist2.Save();
       Stylist result = Stylist.Find(2);
       Assert.AreEqual(newStylist2, result);
     }
@@ -72,9 +76,9 @@ namespace HairSalon.Tests
     [TestMethod]
     public void GetClients_ReturnsEmptyClientList_ClientList()
     {
-      //Arrange
       string name = "Test Stylist";
       Stylist newStylist = new Stylist(name);
+      newStylist.Save();
       List<Client> newList = new List<Client> { };
       List<Client> result = newStylist.GetClients();
       CollectionAssert.AreEqual(newList, result);
@@ -85,9 +89,11 @@ namespace HairSalon.Tests
     {
       string clientName = "Test Client";
       Client newClient = new Client(clientName, 1);
+      newClient.Save();
       List<Client> newList = new List<Client> { newClient };
       string stylistName = "Test Stylist";
       Stylist newStylist = new Stylist(stylistName);
+      newStylist.Save();
       newStylist.AddClient(newClient);
       List<Client> result = newStylist.GetClients();
       CollectionAssert.AreEqual(newList, result);

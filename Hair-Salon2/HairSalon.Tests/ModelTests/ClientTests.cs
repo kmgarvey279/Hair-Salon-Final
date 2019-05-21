@@ -16,7 +16,6 @@ namespace HairSalon.Tests
     public void Dispose()
     {
       Client.ClearAll();
-      Stylist.ClearAll();
     }
 
     [TestMethod]
@@ -95,28 +94,18 @@ namespace HairSalon.Tests
       CollectionAssert.AreEqual(testList, result);
     }
 
-    [TestMethod]
-    public void Save_AssignsIdToObject_Id()
-    {
-      Client testClient = new Client("Test Client", 1);
-      testClient.Save();
-      Client savedClient = Client.GetAll()[0];
-      int result = savedClient.GetId();
-      int testId = testClient.GetId();
-      Assert.AreEqual(testId, result);
-    }
 
-    [TestMethod]
-    public void Edit_UpdatesClientInDatabase_String()
-    {
-      string firstName = "Test Client 1";
-      Client testClient = new Client(firstName, 1);
-      testClient.Save();
-      string secondName = "Test Client2";
-      testClient.Edit(secondName);
-      string result = Client.Find(testClient.GetId()).GetName();
-      Assert.AreEqual(secondName, result);
-    }
+    // [TestMethod]
+    // public void Edit_UpdatesClientInDatabase_String()
+    // {
+    //   string firstName = "Test Client 1";
+    //   Client testClient = new Client(firstName, 1);
+    //   testClient.Save();
+    //   string secondName = "Test Client2";
+    //   testClient.Edit(secondName);
+    //   string result = Client.Find(testClient.GetId()).GetName();
+    //   Assert.AreEqual(secondName, result);
+    // }
 
   }
 }

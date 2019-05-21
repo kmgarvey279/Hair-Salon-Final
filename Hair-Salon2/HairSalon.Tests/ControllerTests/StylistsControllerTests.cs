@@ -9,13 +9,6 @@ namespace HairSalon.Tests
   [TestClass]
   public class StylistsControllerTest
   {
-    [TestMethod]
-    public void Create_ReturnsCorrectActionType_RedirectToActionResult()
-    {
-      StylistsController controller = new StylistsController();
-      ActionResult view = controller.Create("Tony");
-      Assert.IsInstanceOfType(view, typeof(RedirectToActionResult));
-    }
 
     [TestMethod]
     public void New_ReturnsCorrectView_True()

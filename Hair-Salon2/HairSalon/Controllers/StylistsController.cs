@@ -20,10 +20,11 @@ namespace HairSalon.Controllers
       return View();
     }
 
-    [HttpGet("/stylists")]
+    [HttpPost("/stylists")]
     public ActionResult Create(string stylistName)
     {
       Stylist newStylist = new Stylist(stylistName);
+      newStylist.Save();
       List<Stylist> allStylists = Stylist.GetAll();
       return View("Index", allStylists);
     }

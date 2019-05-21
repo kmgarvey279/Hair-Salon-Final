@@ -10,7 +10,7 @@ namespace HairSalon.Models
     private int _id;
     private List<Client> _clients;
 
-    public Stylist(string stylistName, int id =0)
+    public Stylist(string stylistName, int id = 0)
     {
       _name = stylistName;
       _id = id;
@@ -133,15 +133,15 @@ namespace HairSalon.Models
       else
       {
         Stylist newStylist = (Stylist) otherStylist;
-        bool idEquality = this.GetId().Equals(newStylist.GetId());
-        bool nameEquality = this.GetName().Equals(newStylist.GetName());
+        bool idEquality = (this.GetId() == newStylist.GetId());
+        bool nameEquality = (this.GetName() == newStylist.GetName());
         return (nameEquality && idEquality);
       }
     }
 
     public override int GetHashCode()
     {
-        return this.GetId().GetHashCode();
+      return this.GetId().GetHashCode();
     }
 
     public void Save()
@@ -149,9 +149,9 @@ namespace HairSalon.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO stylists (stylist_name) VALUES (@name);";
+      cmd.CommandText = @"INSERT INTO stylists (stylist_name) VALUES (@stylistName);";
       MySqlParameter name = new MySqlParameter();
-      name.ParameterName = "@name";
+      name.ParameterName = "@stylistName";
       name.Value = this._name;
       cmd.Parameters.Add(name);
       cmd.ExecuteNonQuery();

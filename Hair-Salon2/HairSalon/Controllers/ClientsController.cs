@@ -15,12 +15,12 @@ namespace HairSalon.Controllers
       return View(stylist);
     }
 
-    [HttpPost("/clients/delete")]
-    public ActionResult DeleteAll()
-    {
-      Client.ClearAll();
-      return View();
-    }
+    // [HttpPost("/clients/delete")]
+    // public ActionResult DeleteAll()
+    // {
+    //   Client.ClearAll();
+    //   return View();
+    // }
 
     [HttpGet("/stylists/{stylistId}/clients/{clientId}")]
     public ActionResult Show(int stylistId, int clientId)
@@ -30,7 +30,7 @@ namespace HairSalon.Controllers
       Stylist stylist = Stylist.Find(stylistId);
       model.Add("client", client);
       model.Add("stylist", stylist);
-      return View(client);
+      return View(model);
     }
 
     [HttpGet("/stylists/{stylistId}/clients/{clientId}/edit")]

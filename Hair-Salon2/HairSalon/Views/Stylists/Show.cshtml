@@ -3,7 +3,7 @@
 <ol>
 @foreach (var client in @Model["clients"])
 {
-  <li><a href='/stylists/@Model["stylist"].GetId()/clients/@client.Getid()'>@client.GetName()</a></li>
+  <li><a href='/stylists/@Model["stylist"].GetId()/clients/@client.GetId()'>@client.GetName()</a></li>
 }
 </ol>
 
