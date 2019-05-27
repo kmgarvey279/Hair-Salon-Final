@@ -1,10 +1,16 @@
-<h1>Add a new stylist</h1>
+@{
+  Layout = "_Layout";
+}
 
-<form action="/stylists" method="post">
-  <label for="stylistName">Stylist name</label>
-  <input id="stylistName" name="stylistName" type="text">
-  <button type="submit">Add</button>
-</form>
+<div class="container">
+  <h2>Add a new stylist</h2>
+  <hr />
+  <form action="/stylists" method="post">
+    <label for="stylistName">Stylist name</label>
+    <input id="stylistName" name="stylistName" type="text">
+    <button type="submit">Add</button>
+  </form>
 
-<p><a href="/">Back home</a></p>
-<p><a href="/stylists">Back to stylists.</a></p>
+  <p><a href="/">Back home</a></p>
+  <p><a href="/stylists">Back to stylists.</a></p>
+</div>  

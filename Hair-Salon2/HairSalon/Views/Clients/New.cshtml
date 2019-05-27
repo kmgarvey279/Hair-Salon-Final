@@ -1,8 +1,15 @@
-<h1>To Do List</h1>
+@{
+  Layout = "_Layout";
+}
 
-<form action="/stylists/@Model.GetId()/clients" method="post">
-  <input id='/stylistId' name='stylistId' type='hidden' value='@Model.GetId()'>
-  <label for="clientName">Add a new client</label>
-  <input id="clientName" name="clientName" type="text">
-  <button type="submit">Add client</button>
-</form>
+<div class="container">
+  <h1>Hair Salon</h1>
+  <hr />
+
+  <form action="/stylists/@Model.GetId()" method="post">
+    <input id='/stylistId' name='stylistId' type='hidden' value='@Model.GetId()'>
+    <label for="clientName">Add a new client</label>
+    <input id="clientName" name="clientName" type="text">
+    <button type="submit">Add client</button>
+  </form>
+</div>

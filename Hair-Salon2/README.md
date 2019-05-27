@@ -27,4 +27,5 @@ _- MySQL_
 ### License
 
 _This software is licensed under the MIT license._
+Icons made by "https://www.freepik.com/" from https://www.flaticon.com/" 			 www.flaticon.com is licensed by Creative Commons BY 3.0
 Copyright (c) 2019 **_{Kevin Garvey}_**

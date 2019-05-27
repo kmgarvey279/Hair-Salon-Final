@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+@using HairSalon.Models;
+
+<div class="container">
+  <h2>@Model["specialty"].GetName()</h2>
+  <hr />
+  <h3>Stylists:</h3>
+  @if (@Model["specialtyStylists"].Count !=0)
+  {
+    <ul>
+      @foreach (var stylist in @Model["specialtyStylists"])
+      {
+        <li>@stylist.GetName()</li>
+      }
+    </ul>
+  }
+
+  <p><a href='/specialties/new'>Add a new specialty</a></p>
+  <p><a href="/specialties/@Model["specialty"].GetId()/delete">Delete this specialty</a></p>
+  <p><a href='/specialties'>Return to specialty list</a></p>
+  <p><a href='/'>Return Home</a></p>
+</div>

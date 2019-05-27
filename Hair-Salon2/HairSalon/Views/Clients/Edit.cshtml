@@ -1,4 +1,9 @@
+@{
+  Layout = "_Layout";
+}
+
 <h2>Edit Client: @Model["client"].GetName()</h2>
+<hr />
 
 <form action="/stylists/@Model["stylist"].GetId()/clients/@Model["client"].GetId()" method="post">
   <label for="newName">Name:</label>

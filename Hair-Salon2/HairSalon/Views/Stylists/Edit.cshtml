@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+  <h2>Edit Stylist: @Model.GetName()</h2>
+  <hr />
+
+  <form action="/stylists/@Model.GetId()/edit" method="post">
+    <label for="newName">Name:</label>
+    <input type="text" name="newName" value="@Model.GetName()">
+    <button type="submit">Edit</button>
+  </form>
+  <h4><a href='/stylists/@Model.GetId()'>Return to previous page</a></h4>
+</div>

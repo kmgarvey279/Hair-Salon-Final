@@ -1,0 +1,38 @@
+body {
+  margin-top: 100px;
+background-color: blue;
+color: gray;
+text-align: center;
+}
+
+div#header {
+  background-color: darkblue;
+  text-align: center;
+  position: fixed;
+  top:0px;
+  left:0px;
+  width: 100%;
+  color: black;
+}
+
+div#footer {
+  background-color: darkblue;
+  text-align: center;
+  position: fixed;
+  bottom:0px;
+  left:0px;
+  width: 100%;
+  color: black;
+}
+
+#img-wrap {
+  float:left;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+#img-wrap2 {
+  float:right;
+  margin-top: 10px;
+  margin-right: 10px;
+}

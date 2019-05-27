@@ -1,12 +1,42 @@
-<h3>This stylist has the following clients:</h3>
-
-<ol>
-@foreach (var client in @Model["clients"])
-{
-  <li><a href='/stylists/@Model["stylist"].GetId()/clients/@client.GetId()'>@client.GetName()</a></li>
+@using HairSalon.Models;
+@{
+  Layout = "_Layout";
 }
-</ol>
 
-<p><a href='/stylists/@Model["stylist"].GetId()/clients/new'>Add a new client</a></p>
-<p><a href='/stylists/'>Return to stylist list</a></p>
-<p><a href='/'>Return Home</a></p>
+<div class="container">
+  <h2>@Model["stylist"].GetName()</h2>
+  <hr />
+  <h3>This stylist has the following clients:</h3>
+  <ol>
+  @foreach (Client client in @Model["clients"])
+  {
+    <li><a href='/stylists/@Model["stylist"].GetId()/clients/@client.GetId()'>@client.GetName()</a></li>
+  }
+  </ol>
+  <h3>@Model["stylist"].GetName()'s specialties include:</h3>
+
+  <ul>
+  @foreach (Specialty specialty in @Model["thisSpecialties"])
+  {
+    <li>@specialty.GetName()</li>
+  }
+  </ul>
+
+  <h4>Add a new specialty:</h4>
+  <form action='/stylists/@Model["stylist"].GetId()/specialties/new' method='post'>
+    <label for='specialtyId'>Select a specialty</label>
+    <select id='specialtyId' name='specialtyId' type='text'>
+      @foreach (var specialty in @Model["allSpecialties"])
+      {
+        <option value='@specialty.GetId()'>@specialty.GetName()</option>
+      }
+    </select>
+    <button type='submit'>Add Specialty</button>
+  </form>
+
+  <p><a href='/stylists/@Model["stylist"].GetId()/clients/new'>Add a new client</a></p>
+  <p><a href="/stylists/@Model["stylist"].GetId()/edit">Edit this stylist</a></p>
+  <p><a href="/stylists/@Model["stylist"].GetId()/delete">Delete this stylist</a></p>
+  <p><a href='/stylists/'>Return to stylist list</a></p>
+  <p><a href='/'>Return Home</a></p>
+</div>
