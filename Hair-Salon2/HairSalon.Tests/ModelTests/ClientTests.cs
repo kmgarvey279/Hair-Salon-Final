@@ -21,7 +21,7 @@ namespace HairSalon.Tests
     [TestMethod]
     public void ClientConstructor_CreatesInstanceOfClient_Client()
     {
-      Client newClient = new Client("Test Client", 1);
+      Client newClient = new Client("Test Client", "Test Number", "Test Email", "Test Notes", 1);
       Assert.AreEqual(typeof(Client), newClient.GetType());
     }
 
@@ -29,7 +29,7 @@ namespace HairSalon.Tests
     public void GetName_ReturnsName_String()
     {
       string name = "Test Client";
-      Client newClient = new Client(name, 1);
+      Client newClient = new Client(name, "Test Number", "Test Email", "Test Notes", 1);
       string result = newClient.GetName();
       Assert.AreEqual(name, result);
     }
@@ -38,7 +38,7 @@ namespace HairSalon.Tests
     public void SetName_SetsName_String()
     {
       string name = "Test Client1";
-      Client newClient = new Client(name, 1);
+      Client newClient = new Client(name, "Test Number", "Test Email", "Test Notes", 1);
       string updatedName = "Test Client2";
       newClient.SetName(updatedName);
       string result = newClient.GetName();
@@ -58,9 +58,9 @@ namespace HairSalon.Tests
     {
       string name01 = "Test Client1";
       string name02 = "Test Client2";
-      Client newClient1 = new Client(name01, 1);
+      Client newClient1 = new Client(name01, "Test Number", "Test Email", "Test Notes", 1);
       newClient1.Save();
-      Client newClient2 = new Client(name02, 1);
+      Client newClient2 = new Client(name02, "Test Number", "Test Email", "Test Notes", 1);
       newClient2.Save();
       List<Client> newList = new List<Client> { newClient1, newClient2 };
       List<Client> result = Client.GetAll();
@@ -79,15 +79,15 @@ namespace HairSalon.Tests
     [TestMethod]
     public void Equals_ReturnsTrueIfNamesAreTheSame_Client()
     {
-      Client firstClient = new Client("Test Client", 1);
-      Client secondClient = new Client("Test Client", 1);
+      Client firstClient = new Client("Test Client", "Test Number", "Test Email", "Test Notes", 1);
+      Client secondClient = new Client("Test Client", "Test Number", "Test Email", "Test Notes", 1);
       Assert.AreEqual(firstClient, secondClient);
     }
 
     [TestMethod]
     public void Save_SavesToDatabase_ClientList()
     {
-      Client testClient = new Client("Test Client", 1);
+      Client testClient = new Client("Test Client", "Test Number", "Test Email", "Test Notes", 1);
       testClient.Save();
       List<Client> result = Client.GetAll();
       List<Client> testList = new List<Client>{testClient};

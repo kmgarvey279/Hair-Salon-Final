@@ -8,6 +8,16 @@
 <form action="/stylists/@Model["stylist"].GetId()/clients/@Model["client"].GetId()" method="post">
   <label for="newName">Name:</label>
   <input type="text" name="newName" value="@Model["client"].GetName()">
+
+  <label for="newPhoneNumber">Phone Number:</label>
+  <input type="text" name="newPhoneNumber" value="@Model["client"].GetPhoneNumber()">
+
+  <label for="newEmail">Email:</label>
+  <input type="text" name="newEmail" value="@Model["client"].GetEmail()">
+
+  <label for="newNotes">Notes:</label>
+  <input type="text" name="newNotes" value="@Model["client"].GetNotes()">
+
   <button type="submit">Edit</button>
 </form>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 10, 2019 at 11:43 PM
+-- Generation Time: May 30, 2019 at 05:05 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.10
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `kevin_garvey`
 --
-CREATE DATABASE IF NOT EXISTS `kevin_garvey` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `kevin_garvey`;
 
 -- --------------------------------------------------------
 
@@ -33,6 +31,32 @@ USE `kevin_garvey`;
 CREATE TABLE `clients` (
   `client_id` int(11) NOT NULL,
   `client_name` varchar(255) NOT NULL,
+  `client_phone_number` varchar(255) NOT NULL,
+  `client_email` varchar(255) NOT NULL,
+  `client_notes` varchar(510) NOT NULL,
+  `stylist_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `specialties`
+--
+
+CREATE TABLE `specialties` (
+  `specialty_id` int(11) NOT NULL,
+  `specialty_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `specialties_stylists`
+--
+
+CREATE TABLE `specialties_stylists` (
+  `id` int(11) NOT NULL,
+  `specialty_id` int(11) NOT NULL,
   `stylist_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -58,6 +82,18 @@ ALTER TABLE `clients`
   ADD PRIMARY KEY (`client_id`);
 
 --
+-- Indexes for table `specialties`
+--
+ALTER TABLE `specialties`
+  ADD PRIMARY KEY (`specialty_id`);
+
+--
+-- Indexes for table `specialties_stylists`
+--
+ALTER TABLE `specialties_stylists`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `stylists`
 --
 ALTER TABLE `stylists`
@@ -72,6 +108,18 @@ ALTER TABLE `stylists`
 --
 ALTER TABLE `clients`
   MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `specialties`
+--
+ALTER TABLE `specialties`
+  MODIFY `specialty_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `specialties_stylists`
+--
+ALTER TABLE `specialties_stylists`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `stylists`

@@ -8,8 +8,19 @@
 
   <form action="/stylists/@Model.GetId()" method="post">
     <input id='/stylistId' name='stylistId' type='hidden' value='@Model.GetId()'>
-    <label for="clientName">Add a new client</label>
+
+    <label for="clientName">New Client Name:</label>
     <input id="clientName" name="clientName" type="text">
+
+    <label for="clientPhoneNumber">New Client Phone Number:</label>
+    <input id="clientPhoneNumber" name="clientPhoneNumber" type="text">
+
+    <label for="clientEmail">New Client Email Address:</label>
+    <input id="clientEmail" name="clientEmail" type="text">
+
+    <label for="clientNotes">Additional Notes:</label>
+    <input id="clientNotes" name="clientNotes" type="text">
+
     <button type="submit">Add client</button>
   </form>
 </div>

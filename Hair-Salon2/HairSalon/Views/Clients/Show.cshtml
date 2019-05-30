@@ -7,7 +7,10 @@
   <hr />
 
   <h2>@Model["client"].GetName()</h2>
+  <h3>Phone:@Model["client"].GetPhoneNumber()</h3>
+  <h3>Email:@Model["client"].GetEmail()</h3>
   <h3>Stylist: @Model["stylist"].GetName()</h3>
+  <h4>@Model["client"].GetNotes()</h4>
 
   <a href='/stylists/@Model["stylist"].GetId()/clients/@Model["client"].GetId()/edit'>Edit this Item</a>
   <a href='/stylists/@Model["stylist"].GetId()/clients/new'>Add another client</a>

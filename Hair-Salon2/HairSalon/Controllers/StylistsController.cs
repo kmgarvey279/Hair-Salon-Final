@@ -45,9 +45,9 @@ namespace HairSalon.Controllers
     }
 
     [HttpPost("/stylists/{stylistId}")]
-    public ActionResult Create(int stylistId, string clientName)
+    public ActionResult Create(int stylistId, string clientName, string clientPhoneNumber, string clientEmail, string clientNotes)
     {
-      Client newClient = new Client(clientName, stylistId);
+      Client newClient = new Client(clientName, clientPhoneNumber, clientEmail, clientNotes, stylistId);
       newClient.Save();
       Stylist foundStylist = Stylist.Find(stylistId);
       Dictionary<string, object> model = new Dictionary<string, object>();
