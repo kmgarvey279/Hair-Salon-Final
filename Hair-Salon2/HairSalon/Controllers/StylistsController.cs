@@ -21,9 +21,9 @@ namespace HairSalon.Controllers
     }
 
     [HttpPost("/stylists")]
-    public ActionResult Create(string stylistName)
+    public ActionResult Create(string stylistName, string stylistAvailability)
     {
-      Stylist newStylist = new Stylist(stylistName);
+      Stylist newStylist = new Stylist(stylistName, stylistAvailability);
       newStylist.Save();
       List<Stylist> allStylists = Stylist.GetAll();
       return View("Index", allStylists);
@@ -78,10 +78,10 @@ namespace HairSalon.Controllers
     }
 
     [HttpPost("/stylists/{stylistId}/edit")]
-    public ActionResult Update(int stylistId, string newName)
+    public ActionResult Update(int stylistId, string newName, string newAvailability)
     {
       Stylist stylist = Stylist.Find(stylistId);
-      stylist.Edit(newName);
+      stylist.Edit(newName, newAvailability);
       return RedirectToAction("Index");
     }
 

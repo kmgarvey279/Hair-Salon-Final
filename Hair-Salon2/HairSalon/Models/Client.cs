@@ -129,6 +129,11 @@ namespace HairSalon.Models
       }
     }
 
+    public override int GetHashCode()
+    {
+      return this.GetId().GetHashCode();
+    }
+
     public override bool Equals(System.Object otherClient)
     {
       if (!(otherClient is Client))
@@ -263,6 +268,33 @@ namespace HairSalon.Models
       {
         conn.Dispose();
       }
+    }
+
+    public static List<Client> GetAll()
+    {
+      List<Client> allClients = new List<Client> {};
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM clients;";
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+      while(rdr.Read())
+      {
+        int ClientId = rdr.GetInt32(0);
+        string ClientName = rdr.GetString(1);
+        string ClientPhoneNumber = rdr.GetString(2);
+        string ClientEmail = rdr.GetString(3);
+        string ClientNotes = rdr.GetString(4);
+        int ClientStylistId = rdr.GetInt32(5);
+        Client newClient = new Client(ClientName, ClientId);
+        allClients.Add(newClient);
+      }
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return allClients;
     }
 
 

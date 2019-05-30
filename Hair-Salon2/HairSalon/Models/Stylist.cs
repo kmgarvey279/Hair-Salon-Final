@@ -7,17 +7,34 @@ namespace HairSalon.Models
   public class Stylist
   {
     private string _name;
+    public string _availability;
     private int _id;
 
-    public Stylist(string stylistName, int id = 0)
+    public Stylist(string name, string availability int id = 0)
     {
-      _name = stylistName;
+      _name = name;
+      _availability = availability;
       _id = id;
     }
 
     public string GetName()
     {
       return _name;
+    }
+
+    public string SetName(newName)
+    {
+      _name = newName;
+    }
+
+    public string GetAvailability()
+    {
+      return _availability;
+    }
+
+    public string SetAvailability(newAvailability)
+    {
+      _availability = newAvailability;
     }
 
     public int GetId()
@@ -67,7 +84,8 @@ namespace HairSalon.Models
       {
         int StylistId = rdr.GetInt32(0);
         string StylistName = rdr.GetString(1);
-        Stylist newStylist = new Stylist(StylistName, StylistId);
+        string StylistAvailability = rdr.GetString(2);
+        Stylist newStylist = new Stylist(StylistName, StylistAvailability, StylistId);
         allStylists.Add(newStylist);
       }
       conn.Close();
@@ -91,12 +109,14 @@ namespace HairSalon.Models
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
       int StylistId = 0;
       string StylistName = "";
+      string StylistAvailability = "";
       while(rdr.Read())
       {
         StylistId = rdr.GetInt32(0);
         StylistName = rdr.GetString(1);
+        StylistAvailability = rdr.GetString(2);
       }
-      Stylist newStylist = new Stylist(StylistName, StylistId);
+      Stylist newStylist = new Stylist(StylistName, StylistAvailability, StylistId);
       conn.Close();
       if (conn != null)
       {
@@ -197,9 +217,10 @@ namespace HairSalon.Models
       else
       {
         Stylist newStylist = (Stylist) otherStylist;
-        bool idEquality = (this.GetId() == newStylist.GetId());
-        bool nameEquality = (this.GetName() == newStylist.GetName());
-        return (nameEquality && idEquality);
+        bool idEquality = this.GetId() == newStylist.GetId());
+        bool nameEquality = this.GetName() == newStylist.GetName());
+        bool availabilityEquality = this.GetAvailability() == newStylist.GetAvailability();
+        return (nameEquality && availabilityEquality && idEquality);
       }
     }
 
@@ -237,6 +258,8 @@ namespace HairSalon.Models
       cmd.Parameters.Add(thisId);
       MySqlParameter nameUpdate = new MySqlParameter("@newName", newName);
       cmd.Parameters.Add(nameUpdate);
+      MySqlParameter availabilityUpdate = new MySqlParameter("@newAvailability", newAvailability);
+      cmd.Parameters.Add(availabilityUpdate);
       cmd.ExecuteNonQuery();
       _name = newName;
       conn.Close();

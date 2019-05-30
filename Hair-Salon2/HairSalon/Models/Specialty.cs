@@ -114,6 +114,11 @@ namespace HairSalon.Models
       return allSpecialties;
     }
 
+    public override int GetHashCode()
+    {
+      return this.GetId().GetHashCode();
+    }
+
     public override bool Equals(System.Object otherSpecialty)
     {
       if (!(otherSpecialty is Specialty))
