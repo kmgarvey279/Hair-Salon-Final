@@ -13,7 +13,8 @@
 - Run dotnet run in the command line. Once you receive confirmation that the program is running, navigate to http://localhost:5000/ in your web browser.    
 
 ### Known Bugs
-None of the user interface is functional :(
+None at this time.
+
 ### Support and contact details
 
 _Please contact me at kmgarvey279@gmail.com if you have any questions or comments._
